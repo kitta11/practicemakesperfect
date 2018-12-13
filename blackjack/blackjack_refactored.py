@@ -52,7 +52,7 @@ class Hand:
         if card.rank == 'Ace' and self.value > 10:
             self.value += 1
         elif card.rank == 'Ace' and self.value <= 10:
-            self.value += 1
+            self.value += 11
         else:
             self.value += values[card.rank]
 
@@ -193,9 +193,9 @@ while True:
     if player_hand.value <= 21:
         while dealer_hand.value < 17:
             hit(deck, dealer_hand)
-        
+
         show_all(player_hand, dealer_hand)
-        
+
         if dealer_hand.value > 21:
             dealer_busts(player_hand, dealer_hand, player_chips)
         elif dealer_hand.value > player_hand.value:
