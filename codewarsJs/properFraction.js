@@ -20,6 +20,17 @@ function gcd(a, b) {
   return b;
 }
 
+const binaryGcd = (a, b) => {
+  if (a < 0) { a = -a };
+  if (b < 0) { b = -b };
+  while (b !== 0) {
+    a %= b;
+    if (a == 0) return b;
+    b %= a;
+  }
+  return a;
+}
+
 // const steinGcd = (x, y) => {
 //   if (a === 0) {
 //     return b;
@@ -51,7 +62,7 @@ const recursiveGcd = (x, y) => {
 function properFractions(n) {
   let fractions = [];
   for (let i = 1; i < n; i++) {
-    if (gcd(i, n) === 1) {
+    if (binaryGcd(i, n) === 1) {
       fractions.push(i)
     }
   }
@@ -60,9 +71,10 @@ function properFractions(n) {
 
 console.time('properFractions')
 
-properFractions(9999999999);
+properFractions(18);
 
 console.timeEnd('properFractions')
 
 // console.log(properFractions(6637344));
-// // console.log(gcd(12, 15));
+console.log('gcd', gcd(12, 15));
+console.log('bgcd', binaryGcd(12, 15));
